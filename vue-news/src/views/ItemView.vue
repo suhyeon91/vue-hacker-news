@@ -1,20 +1,16 @@
 <template>
   <div>
     <section>
-      <!-- 질문 상세정보 -->
-      <div class="user-container">
-        <div>
-          <i class='fas fa-user'></i>
-        </div>
-        <div class="user-discription">
-          <router-link v-bind:to="`/user/${itemInfo.user}`">
-            {{ itemInfo.user }}
-          </router-link>
-          <div class="time">
-            {{ itemInfo.time_ago }} 
-          </div>
-        </div>
-      </div>
+      <!-- 사용자 정보 -->
+      <user-profile :info="itemInfo">
+        <!-- <div slot="username">{{ itemInfo.user }}</div> -->
+        <router-link slot="username" :to="`/user/${itemInfo.user}`">
+          {{ itemInfo.user }}
+        </router-link>
+        <template slot="time">{{ itemInfo.time_ago }}</template>
+      </user-profile>
+    </section>
+    <section>
       <h2>{{ itemInfo.title }}</h2>
     </section>
     <section>
@@ -27,8 +23,13 @@
 </template>
 
 <script>
+import UserProfile from '../components/UserProfile.vue';
+
 export default {
- computed: {
+  components: {
+    UserProfile
+  },
+  computed: {
     itemInfo(){
       return this.$store.state.item;
     }
