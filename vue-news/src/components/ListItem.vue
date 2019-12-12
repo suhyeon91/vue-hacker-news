@@ -28,7 +28,7 @@
             <router-link v-if="item.user" v-bind:to="`/user/${item.user}`" class="link-text">
               {{ item.user }}
             </router-link>
-            <a v-bind:href="item.url">
+            <a v-else v-bind:href="item.url">
               {{ item.domain }}
             </a>
           </small>
