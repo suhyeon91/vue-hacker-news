@@ -15,17 +15,15 @@ function fetchNewsList(){
 }
 
 function fetchAskList(){
-    //ES5
-   // return axios.get(config.baseUrl + 'ask/1.json');
-    //ES6
     return axios.get(`${config.baseUrl}ask/1.json`);
 }
 
 function fetchJobsList(){
-    //ES5
-   // return axios.get(config.baseUrl + 'jobs/1.json');
-    //ES6
     return axios.get(`${config.baseUrl}jobs/1.json`);
+}
+
+function fetchList(pageName){
+    return axios.get(`${config.baseUrl}${pageName}/1.json`)
 }
 
 function fetchUserInfo(username){
@@ -33,8 +31,16 @@ function fetchUserInfo(username){
 }
 
 function fetchItemInfo(id){
-    return axios.get(`${config.baseUrl}item/${id}.json`)
+    return axios.get(`${config.baseUrl}item/${id}.json`);
 }
+
+
+
 export{
-    fetchNewsList, fetchAskList, fetchJobsList, fetchUserInfo, fetchItemInfo
+    fetchNewsList, 
+    fetchAskList, 
+    fetchJobsList, 
+    fetchUserInfo, 
+    fetchItemInfo,
+    fetchList
 }
